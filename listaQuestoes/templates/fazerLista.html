@@ -7,7 +7,7 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/criarLista.css' %}">
-
+    <link rel="stylesheet" href="{% static 'css/fazerLista.css' %}">
 </head>
 <body class="bg-black">
 
@@ -24,8 +24,8 @@
         <br>
        <div>
         <label for="alternativa">Alternativa</label>
-        <select name="alternativa" id="" >
-           
+        <select name="alternativa" id="alternativa" >
+           <option value="" disabled selected>---------</option>
             <option value="A">A</option>
             <option value="B">B</option>
             <option value="C">C</option>
@@ -38,7 +38,7 @@
            
         <label for="grauDeCerteza">Grau de certeza</label>
         <select name="grauDeCerteza" id="" >
-           
+           <option value="" selected disabled>-------</option>
             <option value="CERTEZA">CERTEZA</option>
             <option value="DUVIDA">DUVIDA</option>
             <option value="CHUTE">CHUTE</option>
@@ -62,5 +62,29 @@
                 {{q.numero}} - {{q.alternativaMarcada}}
             {% endfor %}
     </div>
+    <button class="bg-primary finalizar">Lançar gabarito</button>
+    <form action="{% url 'lancarGabarito' idLista %}" method="POST">
+     
+        {% csrf_token %}
+
+      <div class="d-flex">
+        <input type="submit" value="SIM" class="btnSim">
+        <input type="button" value="NÃO" class="btnNao">
+      </div>
+    </form>
+
+
+    <script>
+        let finalizar = document.querySelector('.finalizar')
+        let btnNao = document.querySelector('.btnNao')
+        let btnSim = document.querySelector('.btnSim')
+
+        finalizar.addEventListener('click',() => {
+
+            btnNao.style.display = 'inline'
+            btnSim.style.display = 'inline'
+
+        })
+    </script>
 </body>
 </html>

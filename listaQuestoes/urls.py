@@ -21,6 +21,8 @@ from .views import *
 urlpatterns = [
     path('criar/', criarLista, name='criarLista'),
     path('listar/', listar, name='listar'),
-    path('acessar/<int:idLista>',acessarLista, name='acessarLista')
+    path('acessar/<int:idLista>',acessarLista, name='acessarLista'),
+    path('lancarGabarito/<int:idLista>', lancarGabarito, name='lancarGabarito'),
+    path('finalizarLista/<int:idLista>', finalizarLista, name='finalizarLista')
 
 ]

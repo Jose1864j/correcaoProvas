@@ -56,4 +56,22 @@ def acessarLista(request, idLista):
       
 
     questoes =  QuestoesAssinalar.objects.filter(lista=lista)
-    return render(request,"fazerLista.html", {"lista":lista, "questoes":questoes})
+
+    return render(request,"fazerLista.html", {"idLista": lista.id ,"lista":lista, "questoes":questoes})
+
+def lancarGabarito(request, idLista):
+    if request.method == "POST":
+           # Isso retornará um dicionário com os parâmetros da URL.
+          dicionarioQuestoes = {}
+          for chave, valor in request.POST.items():
+              if chave.startswith('inputQuestaoNumero'):
+                  numero = chave.replace("inputQuestaoNumero", "")
+                  dicionarioQuestoes[int(numero)] = valor
+              
+          return HttpResponse(f"Dados recebidos na URL: {dicionarioQuestoes}")
+
+    lista = QuestoesAssinalar.objects.filter(lista=int(idLista))
+    print(lista)
+    return render(request, 'lancarGabarito.html', {'lista':lista})
+def finalizarLista(request, idLista):
+    return HttpResponse('oi')

@@ -1,0 +1,6 @@
+#alternativa{
+    width: 5vw;
+}
+.btnNao, .btnSim{
+    display: none;
+}
