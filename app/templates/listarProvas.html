@@ -1,0 +1,55 @@
+{% load static %}
+{% load custom_filters %}
+<!-- carrega filtros personalizados -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="refresh" content="1"> -->
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/listarProvas.css' %}">
+
+
+</head>
+
+<body>
+    <div class="tableListarProvas">
+        <h1 class="titulo">PROVAS JÁ CRIADAS</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome prova</th>
+                    <th>Data de criação</th>
+                    <th class="status">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for prova in provas%}
+                <tr>
+                    <td>{{ prova.vestibular }} - {{ prova.ano}}</td>
+                    <td>{{ prova.data|date:"d/m/Y"}}</td>
+                    <td class="statusColumn">{{dicionarioQuantQuest|get_item:prova.id}}/{{prova.vestibular.qntQuestoes}}
+                                            <!--  |get_item:prova.id aplica filtrocostumizafo no dicionario(filtor ta la em templatetags) O filtro get_item foi definido para acessar um valor do dicionário com base na chave que você passa. Ou seja, dicionarioQuantQuest|get_item:prova.id vai buscar o valor associado à chave prova.id no dicionário.-->
+
+                       <div class="infosBtn">
+                        <div class="statusBtn"><a href="{% url 'corrigirProva' prova.id%}">
+                            {{ prova.status_value }}</a>  
+                        </div>
+                        <div class="">
+                            <a href="{% url 'redirecionaDetalhes' prova.id %}">
+                           ver detalhes</a>  
+                        </div>
+                       </div>
+                    </td>
+                </tr>
+
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

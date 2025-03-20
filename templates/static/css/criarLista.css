@@ -1,0 +1,31 @@
+form{
+    border: 1px solid white;
+}
+form{
+    width: 50%;
+    color: white;
+    margin: auto;
+    padding:4vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+}
+form > h1{
+    text-align:center;
+}
+
+label, input, select{
+  
+    font-size:3vh;
+}
+form  >div{
+    margin: 10px;
+    height: 5vh;
+
+}
+.btnSubmit{
+    background-color: blue;
+    width: 50%;
+    margin: auto;
+}

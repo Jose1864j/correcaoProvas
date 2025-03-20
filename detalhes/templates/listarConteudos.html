@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/corrigirProva.css' %}">
+    <link rel="stylesheet" href="{% static 'css/listarConteudo.css' %}">
+
+</head>
+<body>
+    
+    <form action="" method="post" id="form">
+        {% csrf_token %}
+        <select name="selecionarConteudo" id="selecionarConteudo">
+            <option id="ConteudoPrecisoVer" value="ConteudoPrecisoVer">Conteudo preciso ver</option>
+            <option id="ConteudoRever" value="ConteudoRever">Conteudo Rever</option>
+            <option  id="Vocabulario" selected value="Vocabulario">Vocabulario</option>
+        </select>
+    </form>
+    <table>
+       
+        <tbody>
+            <tr>
+                <th id="detalhaOque">{{detalhaOQue}}</th>
+                <th></th>
+            </tr>
+        </tbody>
+            <tr>
+              {% for i in valores%}
+              <td>{{i.nome}}</td>
+              <td><span>
+                <a href="{% url 'modificaDados' 'excluir' '{{modelsPertence}}' '{{i.id}}'%}">excluir</a>
+              </span>
+           
+              
+             </tr>
+             {%endfor%}
+             
+
+        <thead>
+
+        </thead>
+    </table>
+   
+    <script>
+        const selecionarConteudo = document.getElementById('selecionarConteudo')
+        const detalhaOque = document.getElementById('detalhaOque').innerText
+        const ConteudoPrecisoVer =document.getElementById('ConteudoPrecisoVer')
+        const ConteudoRever = document.getElementById('ConteudoRever')
+        const Vocabulario = document.getElementById('Vocabulario')
+        
+        ConteudoPrecisoVer.removeAttribute('selected')
+        ConteudoRever.removeAttribute('selected')
+        Vocabulario.removeAttribute('selected')
+
+        selecionarConteudo.onchange = function (){
+            
+          document.getElementById('form').submit()
+        }
+        if(detalhaOque.trim() == 'Conteudos preciso ver'){
+          ConteudoPrecisoVer.setAttribute('selected',true)
+             
+        }
+        else if (detalhaOque.trim()  == 'Conteudo rever'){
+            ConteudoRever.setAttribute('selected', true)
+        }
+       else if (detalhaOque.trim()  == 'Vocabulario'){
+
+        Vocabulario.setAttribute('selected', true)
+
+      }
+        else{
+            alert(detalhaOque.trim())
+        }
+    
+    
+    </script>
+</body>
+</html>

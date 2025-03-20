@@ -1,0 +1,176 @@
+body{
+    background-color: black;
+    color: #fff;
+    margin-bottom: 50vh;
+    
+}
+.provaNome{
+    text-align: center;
+    background-color: #591e1e;
+    padding: 10px;
+    margin-top: 5vh;
+}
+
+.questaoCorrigida{
+    margin-right:4vw;
+}
+.btnVoltar{
+    width: 10%;
+
+}
+.areas > .content{
+    display: flex;
+    flex-wrap: wrap;
+}
+.areaConhecimentoNome{
+    margin-top: 2%;
+    background-color: #303030;
+}
+
+.frameMateria:first-of-type{
+    margin-left: 15px;
+}
+.frameMateria{
+    padding: 10px;
+}
+.materia{
+    
+    border: 1px solid white;
+    text-align: center;
+    padding: 10px;
+    width: 18vw;
+
+}
+
+.acertei, .errei, .enviar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+}
+.acertei .btnAcertei, .btnErrei{
+   width: 10vw;
+}
+.acertei > div{
+    margin-left: 5px;
+    width:3vw;
+    text-align: center;
+    height: 2vw;
+    
+
+}
+.enviar{
+    margin-top: 10px; 
+    width: 100%;
+}
+.enviar button{
+    width: 90%;
+
+    margin: auto;
+    
+}
+.tipoAcerto{
+    cursor: pointer;
+}
+.inputNumber{
+    width: 4vw;
+}
+.forms{
+    margin: 3vh;
+    display: flex;
+    justify-content: space-around;
+}
+.forms  .titulo{
+    padding: 10px;
+    background-color: #ff0000;
+}
+
+.gridContainer{
+    
+    grid-template-columns: repeat(2, 1fr);
+    border: 1px solid white;
+    padding: 5px;
+}
+input{
+    display: block;
+}
+.novoVocabulario, .novoConteudo,.conteudoRever{
+    min-width: 20vw;
+    max-width: 33vw;
+}
+.novoVocabulario input, .novoConteudo input, .conteudoRever input, select{
+    width: 100%;
+    margin-bottom: .2em;
+}
+textarea{
+
+    width: 100%;
+}
+.vocabularios, .conteudos{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* flex-wrap: wrap; */
+    padding-left: 20px;
+    width: 100%;
+  
+    
+}
+.vocabulario, .conteudo{
+    display: flex;
+    padding-top: 10px;
+}
+.vocabularioValor,.conteudoValor{
+ min-width: 60%;
+}
+
+.btnSalvar,.btnVoltar{
+    height: 3.5em;
+     padding: 0;
+}
+.btnSalvar > a,.btnVoltar>a{
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    /* background-color: #303030; */
+    justify-content: center;
+    align-items: center;
+}
+.btnSalvar >a:hover,.btnVoltar>a{
+    text-decoration: underline;
+}
+
+.modificarManualmente{
+    display: flex;
+    justify-content: space-around;
+}
+.modificarManualmente .form{
+    border: #fff 1px solid;
+    padding: 10px;
+}
+.css-nao-funciona-ao-finalizar{
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.css-nao-funciona-ao-finalizar:disabled{
+/*fazer como ficara desabilitado os botões*/
+} 
+.tabelaStatusQuestoes{
+    width: 50vw;
+   margin: auto;
+    grid-template-columns: repeat(6, 1fr);
+
+}
+.tabelaStatusQuestoes > div{
+    padding: 10px;
+}
+
+.tabelaStatusQuestoes .div2{
+    width: 80%;
+    text-align: center;
+    border: 1px solid white;
+    padding: 10px;
+}

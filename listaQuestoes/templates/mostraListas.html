@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/listarProvas.css' %}">
+</head>
+
+<body>
+    <div class="tableListarProvas">
+        <h1 class="titulo">Lista de questões</h1>
+        <tr>
+            <th>assunto</th>
+            <th>Materia</th>
+        </tr>
+
+        <table>
+            <thead>
+                {%for i in listas%}
+                <tr>
+                    <td>{{i.nome}}</td>
+                    <td>{{i.materia}} - <a href="{% url 'acessarLista' i.id %}">Acessar</a></td>
+                </tr>
+                {%endfor%}
+
+            </thead>
+        </table>
+
+    </div>
+</body>
+
+</html>
