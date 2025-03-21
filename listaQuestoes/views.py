@@ -4,6 +4,10 @@ from app.models import *
 from .models import *
 
 # Create your views here.
+def irPara(request, onde):
+    
+    if onde == 'voltarInicio':
+        return redirect('voltarInicio')
 def criarLista(request):
 
     if request.method == 'POST':
@@ -61,17 +65,32 @@ def acessarLista(request, idLista):
 
 def lancarGabarito(request, idLista):
     if request.method == "POST":
-           # Isso retornará um dicionário com os parâmetros da URL.
-          dicionarioQuestoes = {}
+             
+          lista = Listas.objects.get(id=int(idLista))
+          lista.gabaritoLancado = True
+          lista.save()
           for chave, valor in request.POST.items():
               if chave.startswith('inputQuestaoNumero'):
                   numero = chave.replace("inputQuestaoNumero", "")
-                  dicionarioQuestoes[int(numero)] = valor
-              
-          return HttpResponse(f"Dados recebidos na URL: {dicionarioQuestoes}")
+                  
+                  questao = QuestoesAssinalar.objects.get(lista__id=idLista,numero=int(numero))
+                  
+                  questao.letraGabarito = valor
+                  
+                  if str(valor) == str(questao.alternativaMarcada):
+                      questao.certo = True
+                  print(f'valor {valor} alternativa marcada {questao.alternativaMarcada}')
+
+                    
+                  questao.save()
+         
+          return redirect('finalizarLista', idLista)
 
     lista = QuestoesAssinalar.objects.filter(lista=int(idLista))
     print(lista)
     return render(request, 'lancarGabarito.html', {'lista':lista})
 def finalizarLista(request, idLista):
-    return HttpResponse('oi')
+    questoes = QuestoesAssinalar.objects.filter(lista__id=int(idLista))
+    acertos = QuestoesAssinalar.objects.filter(lista__id=int(idLista), certo=True ).count()
+    total  = questoes.count()
+    return render(request, 'finalizarLista.html', {'questoes':questoes, 'acertos':acertos, 'total': total})

@@ -21,7 +21,7 @@ class Listas(models.Model):
     nome = models.CharField(max_length=45)
     tipo = models.CharField(max_length=20) # se é discurssiva ou de assinalar
     materia = models.ForeignKey(Materia, on_delete=models.CASCADE, related_name='Vestibulares' )
-
+    gabaritoLancado = models.BooleanField(default=False)
     def __str__(self):
         return self.nome
     
@@ -34,6 +34,11 @@ class QuestoesAssinalar(models.Model):
         choices=[(tag.name, tag.value) for tag in GrauDeCertezaEnum],
         default=GrauDeCertezaEnum.DEFAULT.name)
     simuladoGeral = models.BooleanField()
+    letraGabarito = models.CharField( max_length=20,
+        choices=[(tag.name, tag.value) for tag in AlternativasEnum],
+        default=AlternativasEnum.DEFAULT.name)
     lista = models.ForeignKey(Listas, on_delete=models.CASCADE)
+    certo = models.BooleanField(default=False)
+    
     def __str__(self):
         return f'{self.numero} - nº {self.numero}'

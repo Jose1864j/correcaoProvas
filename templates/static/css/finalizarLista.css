@@ -1,0 +1,61 @@
+body{
+    background-color: black;
+    
+}
+.quuestao{
+    height: auto;
+}
+.questaoTrue{
+    background-color: green;
+    
+}
+.questaoFalse{
+    background-color: red;
+}
+.linhaGrid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    justify-content: center;
+    align-items: top;
+    padding: 5px;
+   
+    width: 70vw;
+}
+.resultado{
+    margin-bottom: 3vh;
+    margin-top: 4vh;
+    text-align: center;
+    font-size: 2rem;
+    color: white;
+}
+.linhaGrid > div{
+    border: 1px solid white;
+  
+}
+.infos{
+    padding: 5px;
+
+}
+.simuladoDiv{
+    display: none;
+}
+.simuladoTrue{
+    text-align: center;
+    display: block;
+    background-color: yellow ; 
+}
+.legenda{
+    margin:20px;
+}
+.legenda  span{
+    width: 10px;
+    
+    height: 100%;
+}
+.legenda  .verde{
+    background-color: green;
+}
+.legenda  .vermelho{
+    background-color: red;
+}

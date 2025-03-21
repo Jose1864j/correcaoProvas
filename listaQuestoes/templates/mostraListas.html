@@ -7,26 +7,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'css/listarProvas.css' %}">
+    
 </head>
 
 <body>
     <div class="tableListarProvas">
-        <h1 class="titulo">Lista de questões</h1>
+        <table>
+        <thead>
+        <tr><h1 class="titulo">Lista de questões</h1></tr>
         <tr>
             <th>assunto</th>
             <th>Materia</th>
+       
         </tr>
+    </thead>
 
-        <table>
-            <thead>
+        
+            <tbody>
                 {%for i in listas%}
                 <tr>
                     <td>{{i.nome}}</td>
+                    {%if not i.gabaritoLancado %}
                     <td>{{i.materia}} - <a href="{% url 'acessarLista' i.id %}">Acessar</a></td>
+                    {%else %}
+                    <td>{{i.materia}} - <a href="{% url 'finalizarLista' i.id %}">ver resultado</a></td>
+                    {%endif%}
+                   
                 </tr>
                 {%endfor%}
 
-            </thead>
+            </tbody>
         </table>
 
     </div>

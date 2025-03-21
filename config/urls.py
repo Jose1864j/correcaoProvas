@@ -20,7 +20,7 @@ from menu.views import redirectStart
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', redirectStart),
+    path('', redirectStart, name='voltarInicio'),
     path('menu/', include('menu.urls')),
     path('prova/', include('app.urls')),
     path('detalhes/', include('detalhes.urls')),

@@ -63,7 +63,7 @@
             {% endfor %}
     </div>
     <button class="bg-primary finalizar">Lançar gabarito</button>
-    <form action="{% url 'lancarGabarito' idLista %}" method="POST">
+    <form action="{% url 'lancarGabarito' lista.id %}" method="get">
      
         {% csrf_token %}
 
