@@ -31,8 +31,10 @@
             <tr>
               {% for i in valores%}
               <td>{{i.nome}}</td>
+              <td>{{i.materia}}</td>
               <td><span>
-                <a href="{% url 'modificaDados' 'excluir' '{{modelsPertence}}' '{{i.id}}'%}">excluir</a>
+              
+                <a href="{% url 'modificaDados' 'excluir' modelsPertence i.id%}?caminho={{ request.path }}">excluir</a>
               </span>
            
               

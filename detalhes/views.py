@@ -69,5 +69,6 @@ def detalhesTotal(request):
             detalhaOque = 'Conteudos preciso ver'
 
         modelsPertence = selecionado
+      
 
     return render(request, 'listarConteudos.html', {'detalhaOQue':detalhaOque, 'modelsPertence':modelsPertence, 'valores':valores})

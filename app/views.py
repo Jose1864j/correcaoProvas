@@ -214,6 +214,7 @@ def modificaDados(request, acao,modelName,id):
         
         else:
             id = int(id)
+         
             item = model.objects.get(id=id)
             item.delete()
          
@@ -287,7 +288,7 @@ def modificaDados(request, acao,modelName,id):
     if url:
         return redirect(url)  # redireciona para o mesmo caminho da requisição
 
-    return HttpResponse(f'Parte não programada ainda valor da ação {modelName}')
+    return HttpResponse(f'Parte não programada ainda valor da ação {acao}')
 
 def redirecionaDetalhes(request,provaId):
         return redirect(f'/detalhes/detalhesProva/{provaId}')
