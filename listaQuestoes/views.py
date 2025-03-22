@@ -4,10 +4,7 @@ from app.models import *
 from .models import *
 
 # Create your views here.
-def irPara(request, onde):
-    
-    if onde == 'voltarInicio':
-        return redirect('voltarInicio')
+
 def criarLista(request):
 
     if request.method == 'POST':
@@ -88,9 +85,9 @@ def lancarGabarito(request, idLista):
          
           return redirect('finalizarLista', idLista)
 
-    lista = QuestoesAssinalar.objects.filter(lista=int(idLista))
-    print(lista)
-    return render(request, 'lancarGabarito.html', {'lista':lista})
+    Questoeslista = QuestoesAssinalar.objects.filter(lista=int(idLista))
+    lista = Listas.objects.get(id=idLista) 
+    return render(request, 'lancarGabarito.html', {'Questoeslista':Questoeslista, 'lista':lista})
 def finalizarLista(request, idLista):
     questoes = QuestoesAssinalar.objects.filter(lista__id=int(idLista))
     acertos = QuestoesAssinalar.objects.filter(lista__id=int(idLista), certo=True ).count()

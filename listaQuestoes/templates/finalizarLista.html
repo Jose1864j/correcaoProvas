@@ -18,9 +18,9 @@
         <div class="questao questao{{q.certo}} ">
             <div class="infos">
                 {% if q.certo == True%}
-            {{q.numero}} - {{q.letraGabarito}} - {{q.grauDeCerteza}} - {{q.simuladoGeral}}
+            {{q.numero}} - {{q.letraGabarito}} - {{q.grauDeCerteza}} 
             {%else%}
-            {{q.numero}} - {{q.alternativaMarcada}} - {{q.letraGabarito}} -  {{q.grauDeCerteza}}
+            {{q.numero}} - {{q.alternativaMarcada}} -GABARITO: {{q.letraGabarito}} -  {{q.grauDeCerteza}}
 
 
             {%endif%}

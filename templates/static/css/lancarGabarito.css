@@ -1,14 +1,28 @@
 body{
     background-color: black;
     color: white;
+    box-sizing: border-box;
+}
+form{
+    margin: auto;
+    text-align: center;
+    width: 50vw;
+}
+form .d-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 50vw;
+    
 }
 .lancarGabaritoInput{
-    width: 5vw;
+    width: 15vw;
+    height:4vh;
 
 }
 .divInputLancarGabarito{
     margin: 3vh;
-    width: 15vw;
+    width: 25vw;
+   
     margin-left: auto;
     margin-right: auto;
 

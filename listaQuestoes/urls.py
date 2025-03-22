@@ -17,13 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from .views import *
-
+from config.funcoes import *
 urlpatterns = [
     path('criar/', criarLista, name='criarLista'),
     path('listar/', listar, name='listar'),
     path('acessar/<int:idLista>',acessarLista, name='acessarLista'),
     path('lancarGabarito/<int:idLista>', lancarGabarito, name='lancarGabarito'),
     path('finalizarLista/<int:idLista>', finalizarLista, name='finalizarLista'),
-    path('irPara/<str:onde>',irPara, name='irPara')
+    path('irPara/<str:onde>',irPara, name='irPara'),
+    path('irPara/<str:onde>/<int:id>',irPara, name='irPara')
 
 ]

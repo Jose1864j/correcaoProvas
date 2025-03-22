@@ -8,7 +8,7 @@ from config.funcoes import *
 global statusProva
 # Create your views here.
 def funcaoIntermediariaVoltar(request, onde):
-    return irPara(onde)
+    return irPara(request, onde)
 def criarProva(request):
     if request.method == 'POST':
        anoProva = request.POST.get('anoProva')

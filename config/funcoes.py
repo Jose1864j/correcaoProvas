@@ -12,11 +12,17 @@ def printDict(dictionary):
 
             
           
-def irPara(onde):
+def irPara(request, onde, id = None):
+    
     if onde == 'menu':
         return redirect('/menu/iniciar/')
     elif onde ==  'listarProvas': 
         return redirect('/prova/listarProvas/')
+    elif onde == 'fazerLista':
+        return redirect(f'/listaQuestoes/acessar/{id}')
+    elif onde == 'voltarInicio':
+        return redirect('voltarInicio')
+
     return HttpResponse('Não feito ainda ')
                 
 
