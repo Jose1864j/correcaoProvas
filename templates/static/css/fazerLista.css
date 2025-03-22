@@ -1,6 +1,76 @@
+*{
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+       
+}
+body{
+    background-color: black;
+}
 #alternativa{
     width: 5vw;
 }
 .btnNao, .btnSim{
+    display: none;
+}
+form{
+    width: 30vw;
+    margin: auto;
+    
+   font-size: 1.5rem;
+
+}
+form div{
+    margin-top: 4vh;
+    display: flex;
+    justify-content: space-between;
+}
+label,h1,button,.btn{
+    color: white; 
+}
+.titulo{
+    margin-top: 18vh;
+    margin-bottom: 4vh;
+    background-color: rgb(114, 114, 146);
+    text-align: center;
+}
+
+
+.btn{
+    text-align: center;
+    margin: auto;
+    width: 10vw;
+    color: black;
+}
+.container{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+.questoes{
+    
+    background-color: rgb(92, 49, 49);
+    color: white;
+
+
+}
+
+.questoes h1{
+    font-size: 2rem;
+    text-align: center;
+}
+.questoes p{
+    padding: 20px;
+}
+.divFinalizar{
+    margin: auto;
+    margin-top: 5vh;
+    text-align: center;
+}
+
+.finalizar{
+   width: 30vw;
+}
+.btnSim,.btnNao{
     display: none;
 }

@@ -32,9 +32,11 @@ def listar(request):
 def acessarLista(request, idLista):
 
     lista = Listas.objects.get(id=idLista)
-    if request.method == 'POST':
-      
+    if request.method == 'POST' and not QuestoesAssinalar.objects.filter(numero=int(request.POST.get('numero')) ): #essa seugnda condição é apra não ter numero repetido
+       
         numero = request.POST.get('numero') 
+        
+
         alternativaDada = request.POST.get('alternativa') 
         grauDeCerteza =  request.POST.get('grauDeCerteza')
         addSimulado =  request.POST.get('addSimulado') == "on"
