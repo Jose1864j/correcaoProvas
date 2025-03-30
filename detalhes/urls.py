@@ -4,6 +4,7 @@ from .views import *
 
 urlpatterns = [
     path('detalhesProva/<int:provaId>', carregaDetalhes, name='carregaDetalhes' ),
-    path('detalhesTotal/', detalhesTotal, name='detalhesTotal')
+    path('detalhesTotal/', detalhesTotal, name='detalhesTotal'),
+    
 
 ]

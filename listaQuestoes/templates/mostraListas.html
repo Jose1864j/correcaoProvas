@@ -6,40 +6,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <link rel="stylesheet" href="{% static 'css/listarProvas.css' %}">
+
     
 </head>
 
 <body>
-    <div class="tableListarProvas">
-        <table>
-        <thead>
-        <tr><h1 class="titulo">Lista de questões</h1></tr>
-        <tr>
-            <th>assunto</th>
-            <th>Materia</th>
-       
-        </tr>
-    </thead>
+    <div class="d-flex">
+        <div class="tableListarProvas">
+            <table>
+            <thead>
+            <tr><h1 class="titulo">Lista de questões</h1></tr>
+            <tr>
+                <th>assunto</th>
+                <th>Materia</th>
+           
+            </tr>
+        </thead>
+    
+            
+                <tbody>
+                    {%for i in listas%}
+                    <tr>
+                        <td>{{i.nome}}</td>
+                        {%if not i.gabaritoLancado %}
+                        <td>{{i.materia}} - <a href="{% url 'acessarLista' i.id %}">Acessar</a></td>
+                        {%else %}
+                        <td>{{i.materia}} - <a href="{% url 'finalizarLista' i.id %}">ver resultado</a></td>
+                        {%endif%}
+                       
+                    </tr>
+                    {%endfor%}
+    
+                </tbody>
+            </table>
+    
+        </div>
+       <div class="filter"> <form action="{% url 'filtrar' 'listaDeQuestoes' %}" method="POST">
+        {% csrf_token %}
+    
+        <select name="filtrarPeloQ" id="filtrarPeloQ" required>
+            <option value="default" selected disabled>----------------</option>
+            {% for i in materias%}
+                <option value="{{i}}">{{i}}</option>
+            {%endfor%}
+        </select>
+        <br>
+        <input type="submit" name="" id="" class="submiteFiltrar" value="filtrar">
 
-        
-            <tbody>
-                {%for i in listas%}
-                <tr>
-                    <td>{{i.nome}}</td>
-                    {%if not i.gabaritoLancado %}
-                    <td>{{i.materia}} - <a href="{% url 'acessarLista' i.id %}">Acessar</a></td>
-                    {%else %}
-                    <td>{{i.materia}} - <a href="{% url 'finalizarLista' i.id %}">ver resultado</a></td>
-                    {%endif%}
-                   
-                </tr>
-                {%endfor%}
-
-            </tbody>
-        </table>
-
+    </form></div>
     </div>
+    <div class="btn  btn-red btn-danger w-50 mx-auto d-flex ">
+        <a href="{%url 'voltar' 'menu' %}">VOLTAR</a>
+    
+    </div>
+
 </body>
 
 </html>

@@ -13,6 +13,7 @@
 <body>
     
     <form action="" method="post" id="form">
+        
         {% csrf_token %}
         <select name="selecionarConteudo" id="selecionarConteudo">
             <option id="ConteudoPrecisoVer" value="ConteudoPrecisoVer">Conteudo preciso ver</option>
@@ -20,32 +21,41 @@
             <option  id="Vocabulario" selected value="Vocabulario">Vocabulario</option>
         </select>
     </form>
-    <table>
+    <div class="btn  btn-red btn-danger w-50  d-flex ">
+        <a href="{%url 'voltar' 'menu' %}">VOLTAR</a>
+    
+    </div>
+    
        
-        <tbody>
-            <tr>
-                <th id="detalhaOque">{{detalhaOQue}}</th>
-                <th></th>
-            </tr>
-        </tbody>
-            <tr>
-              {% for i in valores%}
-              <td>{{i.nome}}</td>
-              <td>{{i.materia}}</td>
-              <td><span>
+        
               
-                <a href="{% url 'modificaDados' 'excluir' modelsPertence i.id%}?caminho={{ request.path }}">excluir</a>
-              </span>
+                
+    <h1 id="detalhaOque">{{detalhaOQue}}</h1>
+      <div class="itens"> 
+        
+        {% for i in valores%}
+      
+        <div class="item">
+            {{i.nome}}
+            {{i.materia}}
+            <span>
+            
+              <a href="{% url 'modificaDados' 'excluir' modelsPertence i.id%}?caminho={{ request.path }}">excluir</a>
+            </span>
+        </div>
+       
+          
+   
+         {%endfor%}
+
+        
+        </div>
            
-              
-             </tr>
-             {%endfor%}
+            
              
 
-        <thead>
-
-        </thead>
-    </table>
+  
+  
    
     <script>
         const selecionarConteudo = document.getElementById('selecionarConteudo')

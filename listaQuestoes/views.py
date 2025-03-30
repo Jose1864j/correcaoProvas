@@ -8,7 +8,7 @@ from .models import *
 def criarLista(request):
 
     if request.method == 'POST':
-        nome = request.POST.get('nome')
+        nome = request.POST.get('nome').upper()
         materia_id = request.POST.get('materia')
         materia = (Materia.objects.get(id=materia_id))
         lista = Listas(
@@ -23,13 +23,13 @@ def criarLista(request):
 
 def listar(request):
     listas = Listas.objects.all()
-
-    return render(request,'mostraListas.html', {'listas':listas})
+    materias = Materia.objects.all();
+    return render(request,'mostraListas.html', {'listas':listas,'materias': materias})
 
 def acessarLista(request, idLista):
 
     lista = Listas.objects.get(id=idLista)
-    if request.method == 'POST' and not QuestoesAssinalar.objects.filter(numero=int(request.POST.get('numero')) ): #essa seugnda condição é apra não ter numero repetido
+    if request.method == 'POST' and not QuestoesAssinalar.objects.filter(numero=int(request.POST.get('numero')),lista__id=int(idLista) ): #essa seugnda condição é apra não ter numero repetido
        
         numero = request.POST.get('numero') 
         
@@ -93,3 +93,11 @@ def finalizarLista(request, idLista):
     acertos = QuestoesAssinalar.objects.filter(lista__id=int(idLista), certo=True ).count()
     total  = questoes.count()
     return render(request, 'finalizarLista.html', {'questoes':questoes, 'acertos':acertos, 'total': total})
+def filtrar(request, oQue):
+    if request.method == 'POST':
+        if oQue == 'listaDeQuestoes':
+            materia =  request.POST.get('filtrarPeloQ')
+            listaDeQuestoes = Listas.objects.filter(materia__nome=materia)
+            materias = Materia.objects.all()
+            print(listaDeQuestoes)
+            return render(request,'mostraListas.html', {'listas':listaDeQuestoes,'materias':materias})

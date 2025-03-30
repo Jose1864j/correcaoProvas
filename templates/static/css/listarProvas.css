@@ -1,9 +1,10 @@
 *{
     padding: 0;
     margin: 0;
-
+   
 }
-a{
+
+.tableListarProvas a{
     text-decoration: none;
     color: rgb(145, 153, 208);
     background-color: black;
@@ -13,7 +14,7 @@ a:hover{
 
 }
 body{
-    background-color:black;
+    background-color:black ;
    color: white;
 }
 
@@ -23,8 +24,8 @@ th,td{
 .tableListarProvas{
      background-color: rgb(40, 38, 38); 
      width: 80%;
-     margin: auto;
-     margin-top: 20vh;
+    
+   
      border-collapse: collapse;
 }
 tbody tr:nth-child(even) {
@@ -80,3 +81,31 @@ thead tr{
 
 }
 
+.d-flex{
+    margin-top: 10vh;
+    display: flex;
+    justify-content: center;
+   
+}
+.filter{
+    width: 10%;
+    margin: 4vh 0 0 3vw;
+    
+}
+.filter  form select{
+
+    width: 100%;
+}
+
+.submiteFiltrar{
+    margin-top: 3vh;
+    cursor: pointer;
+    width: 100%;
+    background-color: #2bac4d;
+
+}
+.submiteFiltrar:hover{
+    width: 100%;
+    background-color: #4ed673;
+    
+}

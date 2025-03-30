@@ -55,7 +55,6 @@ def carregaDetalhes(request, provaId):
 
 def detalhesTotal(request):
 
-
     detalhaOque = 'Vocabulario'
     modelsPertence = 'Vocabulario'
     valores = Vocabulario.objects.all()
@@ -68,7 +67,8 @@ def detalhesTotal(request):
             valores = ConteudoPrecisoVer.objects.all()
             detalhaOque = 'Conteudos preciso ver'
 
-        modelsPertence = selecionado
-      
+        modelsPertence = selecionado 
 
     return render(request, 'listarConteudos.html', {'detalhaOQue':detalhaOque, 'modelsPertence':modelsPertence, 'valores':valores})
+
+

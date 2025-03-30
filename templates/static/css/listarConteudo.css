@@ -5,3 +5,21 @@
 tbody  tr {
     display: block;
 }
+.itens{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 70%;
+    margin: auto;
+}
+.item{
+    border:  solid 1px white;
+    font-size: 20px;
+   
+    padding: 10px;
+}
+#form{
+    margin-top: 3vh;
+}
+#detalhaOque{
+    text-align: center;
+}

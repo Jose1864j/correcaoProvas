@@ -25,6 +25,9 @@ urlpatterns = [
     path('lancarGabarito/<int:idLista>', lancarGabarito, name='lancarGabarito'),
     path('finalizarLista/<int:idLista>', finalizarLista, name='finalizarLista'),
     path('irPara/<str:onde>',irPara, name='irPara'),
-    path('irPara/<str:onde>/<int:id>',irPara, name='irPara')
+    path('irPara/<str:onde>/<int:id>',irPara, name='irPara'),
+    path('filtrar/<str:oQue>',filtrar, name='filtrar'),
+
+
 
 ]
