@@ -18,12 +18,12 @@ def carregaDetalhes(request, provaId):
     
     for tipo in tipos[filtrarPor]:
         qntQuestoesTotais.append(colocaZeroAntes(fazBuscaQuestoes(prova,filtrarPor,tipo,'all').count()))
-    qntQuestoesTotais.append(f'{colocaZeroAntes(fazBuscaQuestoes(prova,filtrarPor,'all','all').count())}/{colocaZeroAntes(questoesTotais.count())}')
+    qntQuestoesTotais.append(f"{colocaZeroAntes(fazBuscaQuestoes(prova,filtrarPor,'all','all').count())}/{colocaZeroAntes(questoesTotais.count())}")
     if questoesTotais.count() == 0:
         qntQuestoesTotais.append(f'0.00%')
 
     else:
-        qntQuestoesTotais.append(f'{fazBuscaQuestoes(prova,'all','all','all').count()/questoesTotais.count()  *100}%')
+        qntQuestoesTotais.append(f"{fazBuscaQuestoes(prova,'all','all','all').count()/questoesTotais.count()  *100}%")
 
     
 
@@ -34,9 +34,8 @@ def carregaDetalhes(request, provaId):
 
             qntQuestoesPorMateria[materia.nome].append(colocaZeroAntes(fazBuscaQuestoes(prova,filtrarPor,tipo,materia).count()))
         totalPorStatus = colocaZeroAntes(fazBuscaQuestoes(prova, filtrarPor, 'all', materia=materia).count())
-
-        
-        porcentagem = f'{int(totalPorStatus) / fazBuscaQuestoes(prova,status='all', tipo='all', materia=materia).count()  * 100:.2f}%' if int(totalPorStatus) != 0 else f'0%'
+     
+        porcentagem = f"{int(totalPorStatus) / fazBuscaQuestoes(prova,status='all', tipo='all', materia=materia).count()  * 100:.2f}%" if int(totalPorStatus) != 0 else '0%'
         qntQuestoesPorMateria[materia.nome].append(totalPorStatus)
         qntQuestoesPorMateria[materia.nome].append(porcentagem)
         

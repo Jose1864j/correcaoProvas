@@ -29,8 +29,10 @@ def irPara(request, onde, id = None):
 def fazBuscaQuestoes(prova,status,tipo, materia):
     
     if status == 'all':
+       
         if tipo == 'all' and materia == 'all':
-            return Questoes.objects.filter(prova=prova) 
+
+            return Questoes.objects.filter(prova=prova)
 
         elif tipo == 'all':
             return Questoes.objects.filter(prova=prova, materia=materia)
