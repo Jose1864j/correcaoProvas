@@ -23,7 +23,9 @@ urlpatterns = [
     path('', redirectStart, name='voltarInicio'),
     path('menu/', include('menu.urls')),
     path('prova/', include('app.urls')),
+     
+
     path('detalhes/', include('detalhes.urls')),
-    path('listaQuestoes/', include('listaQuestoes.urls')) 
+    path('listaQuestoes/', include('listaQuestoes.urls')) ,
 
 ]

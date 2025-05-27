@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect,get_object_or_404
 from django.apps import apps
+from django.views import View
 from django.http import HttpResponse
 from .models import Vestibular, AreasConhecimento,Materia,Prova,Questoes,StatusEnum, QuestoesErradas, Vocabulario,ConteudoPrecisoVer,ConteudoRever
 from django.contrib.messages import constants
@@ -292,3 +293,18 @@ def modificaDados(request, acao,modelName,id):
 
 def redirecionaDetalhes(request,provaId):
         return redirect(f'/detalhes/detalhesProva/{provaId}')
+
+class DefineTimeDescription(View):
+    def post(self, request, *args,  **kwargs):
+        time = request.POST.get('time')
+        text = request.POST.get('text')
+        id_prova = request.POST.get('id_prova')
+
+        prova = Prova.objects.get(id=int(id_prova))
+        
+        prova.tempo_gasto = time
+        prova.descricao = text
+        prova.save()
+        return redirect('corrigirProva', id_prova)
+    def get(self,request, *args, **kwargs):
+        pass

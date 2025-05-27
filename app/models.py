@@ -38,6 +38,8 @@ class Prova(models.Model):
         choices=[(tag.name, tag.value) for tag in StatusEnum],
         default=StatusEnum.NAOINICIADO.name
     )
+    tempo_gasto = models.TimeField(blank=True, null=True, default=None)
+    descricao = models.TextField(default='', blank=True, null=True)
    
     def __str__(self):
         return f"{self.vestibular} - {self.ano}"

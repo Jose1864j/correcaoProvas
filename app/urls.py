@@ -9,6 +9,7 @@ urlpatterns = [
    path('corrigirProva/<str:id>', corrigirProva, name='corrigirProva'),
    path('adicionaBancoDeDados/<str:adicionaOQue>/<str:idProva>', adicionaBancoDeDados, name='adicionaBancoDeDados'),
    path('modificaDados/<str:acao>/<str:modelName>/<str:id>', modificaDados, name='modificaDados'),
-   path('redirecionaDetalhes/<int:provaId>', redirecionaDetalhes, name='redirecionaDetalhes' )
+   path('redirecionaDetalhes/<int:provaId>', redirecionaDetalhes, name='redirecionaDetalhes' ),
+   path('definirTempo/', DefineTimeDescription.as_view(), name='definirTempo' )
    
 ]
